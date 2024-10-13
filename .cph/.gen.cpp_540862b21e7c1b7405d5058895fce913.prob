@@ -1,1 +1,0 @@
-{"name":"Local: gen","url":"f:\\Codeforces\\gen.cpp","tests":[{"id":1724086265324,"input":"3\n1 8 1\n2 9 2\n3 10 2","output":""},{"id":1724086487712,"input":"1\n1","output":""},{"id":1726552505797,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Codeforces\\gen.cpp","group":"local","local":true}
