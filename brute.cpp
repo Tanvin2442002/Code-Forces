@@ -1,48 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
 #ifdef ONPC
 #include "mydebug.h"
 #else
 #define debug(...) 1
 #endif
 
-void solve(){
-   int n;
-   cin >> n;
-   vector<int> a(n);
-   for(int i=0;i<n;i++) {
-        cin >> a[i];
-   }
-   int i = 0, j = 1, shI = 1, mx = 0;
-   while(j < n) {
-        j = i + 1;
-        if(shI) {
-            shI ^= 1;
-            while(j < n && a[j] >= a[j-1]) j++;
-        }
-        int x = abs(a[i] - a[j-1]);
-        i = j - 1;
-        if(!shI) {
-            shI ^= 1;
-            while(j < n && a[j] <= a[j-1]) j++;
-        }
-        int y = abs(a[i] - a[j-1]);
-        mx = max(mx, min(x, y));
-        i = j - 1;
-   }
-   cout << mx << '\n';
+void solve() {
+  int n, k;
+  cin >> n >> k;
+  vector<int> a(n);
+  for (auto &x : a) {
+    cin >> x;
+  }
+  sort(a.rbegin(), a.rend());
+  for (int i = 1; i < n; i += 2) {
+    if (k == 0) break;
+    if (a[i - 1] - a[i] <= k) {
+      int kk = k;
+      k -= a[i-1] - a[i];
+      a[i] += kk - k;
+    }
+    else {
+      a[i] += k;
+      k = 0;
+    }
+  }
+  debug(a);
+  int x = 0, y = 0;
+  for (int i = 0; i < n; i++) {
+    if (i % 2 == 0) x += a[i];
+    else y += a[i];
+  }
+  cout << x - y << "\n";
 }
 
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
-	int tests = 1;
-	cin >> tests;
-	for (int test = 0; test < tests; test++)
-	{
-		solve();
-	}
+int32_t main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int n;
+  cin >> n;
+  for (int i = 1; i <= n; i++) {
+    // cout<<"Case "<<i<<": ";
+    solve();
+  }
 }

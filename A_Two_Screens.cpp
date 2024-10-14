@@ -23,31 +23,25 @@ int32_t main() {
   int t = 1;
   cin >> t;
   while (t--) {
-    int n, k;
-    cin >> n >> k;
-    priority_queue<int> pq;
-    for (int i = 0; i < n; i++) {
-      int x;
-      cin >> x;
-      pq.push(x);
+    string s, t;
+    cin >> s >> t;
+    int cnt = 0;
+    int i = 0;
+    int sz = max(s.size(), t.size());
+    while (true) {
+      if (s[i] == t[i]) {
+        i++;
+        cnt++;
+      } else
+        break;
+      if (i == sz)
+        break;
     }
-    int A = 0;
-    int B = 0;
-    for (int i = 0; i < n; i++) {
-      if (i % 2 == 0) {
-        A += pq.top();
-      } else {
-        B += pq.top();
-      }
-      // cerr << pq.top() << endl;
-      pq.pop();
-    }
-    // cerr << A << " " << B << endl;
-    if (B + k >= A) {
-      cout << 0 << endl;
-    } else {
-      cout << A - (B + k) << endl;
-    }
+    int op = cnt + (s.size() - cnt) + (t.size() - cnt);
+    if (cnt > 0)
+      cout << op + 1 << endl;
+    else
+      cout << op << endl;
   }
   return 0;
 }

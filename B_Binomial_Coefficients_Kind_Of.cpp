@@ -16,37 +16,31 @@ using namespace std;
 int mod = 1000000007;
 int inf = 1e18;
 
+const int N = 1e6 + 4;
+int permutation[N];
+
 int32_t main() {
   fastio;
   in;
   out;
   int t = 1;
-  cin >> t;
+  // cin >> t;
   while (t--) {
-    int n, k;
-    cin >> n >> k;
-    priority_queue<int> pq;
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n);
     for (int i = 0; i < n; i++) {
-      int x;
-      cin >> x;
-      pq.push(x);
+      cin >> a[i];
     }
-    int A = 0;
-    int B = 0;
     for (int i = 0; i < n; i++) {
-      if (i % 2 == 0) {
-        A += pq.top();
-      } else {
-        B += pq.top();
-      }
-      // cerr << pq.top() << endl;
-      pq.pop();
+      cin >> b[i];
     }
-    // cerr << A << " " << B << endl;
-    if (B + k >= A) {
-      cout << 0 << endl;
-    } else {
-      cout << A - (B + k) << endl;
+    permutation[0] = 1;
+    for(int i=1;i<N;i++){
+        permutation[i] = (permutation[i-1]*2)%mod;
+    }
+    for(int i=0;i<n;i++){
+      cout<<permutation[b[i]]<<endl;
     }
   }
   return 0;

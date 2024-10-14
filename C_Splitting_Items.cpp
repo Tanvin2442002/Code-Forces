@@ -33,21 +33,27 @@ int32_t main() {
     }
     int A = 0;
     int B = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {  // 8 7 4 4 3   15
       if (i % 2 == 0) {
         A += pq.top();
       } else {
         B += pq.top();
+        if (A > B) {
+          int x = A - B;
+          if (x <= k) {
+            B += x;
+            k -= x;
+          } else {
+            B += k;
+            k = 0;
+          }
+        }
       }
       // cerr << pq.top() << endl;
       pq.pop();
     }
     // cerr << A << " " << B << endl;
-    if (B + k >= A) {
-      cout << 0 << endl;
-    } else {
-      cout << A - (B + k) << endl;
-    }
+    cout << A - B << endl;
   }
   return 0;
 }

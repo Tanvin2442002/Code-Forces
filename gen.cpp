@@ -107,21 +107,15 @@ int cnt = 12;
  int cs = 1;
 // complete this function according to the requirements
 void generate_test() {
-    int x = rand(1,5);
-    vector<int>arr = gen_array(x,1,5);
-    cout<<x<<endl;
-    for(auto i:arr){
-        cout<<i<<" ";
-    }
-    cout << '\n';
+    int n = rand(2, 5), k = rand(0, 5);
+    cout << n << ' ' << k << '\n';
+    cout << gen_array(n, 1, 10);
 }
 
 signed main() {
     srand(accuracy);
-    int t = 1;
-#ifndef SINGLE_TEST
-    t = 1, cout << t << '\n';
-#endif
+    int t = rand(1, 10);
+    cout << t << '\n';
     while (t--) {
         generate_test();
     }
