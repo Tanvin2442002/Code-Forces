@@ -65,7 +65,7 @@ int32_t main()
           while(j <= n && a[j] < a[j-1]) j++;
         }
         arr[j] = j;
-        // dbg(j);
+        dbg(j);
         i = j;
       }
       build(1, 1, n);
@@ -88,7 +88,7 @@ int32_t main()
           if(mnInd == inf) {
             break;
           }
-          // dbg(mnInd);
+          dbg(mnInd);
           if(mnInd - 1 == ind) mnInd++;
           if(mnInd - ind > rg) {
             ind = mnInd;
@@ -99,7 +99,7 @@ int32_t main()
             ind += rg;
           }
           
-          // dbg(ind, cnt, div);
+          dbg(ind, cnt, div);
         }
         for(auto &y: x.second) ans[y] = {div, cnt};
       }

@@ -100,23 +100,36 @@ ostream &operator<<(ostream &other, const vector<pair<int, int>> &v) {
 }
 
 // comment the just below line if test cases required
-// #define SINGLE_TEST
+#define SINGLE_TEST
 const int max_tests = 13;
 
 int cnt = 12;
  int cs = 1;
 // complete this function according to the requirements
 void generate_test() {
-    int n = rand(2, 5), k = rand(0, 5);
-    cout << n << ' ' << k << '\n';
-    cout << gen_array(n, 1, 10);
+    int n = rand(1, 15);
+    cout<<n<<endl;
+    vector<int> a = gen_array(n, -20, 20);
+    cout<<a;
+    int q = rand(1, 5);
+    cout<<q<<endl;
+    while(q--) {
+        int mn = rand(1, n);
+        cout<<mn<<endl;
+    }
+    
 }
 
 signed main() {
     srand(accuracy);
-    int t = rand(1, 10);
+    // int t = rand(1, 10);
+    freopen("output.txt", "w", stdout);
+    int t = 1;
+    // cout << t << '\n';
+    t = rand(10000, 100000);
     cout << t << '\n';
     while (t--) {
-        generate_test();
+        cout << rand(1, 1000000000) << ' ' ;
     }
+    cout << '\n';
 }

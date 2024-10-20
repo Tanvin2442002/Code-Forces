@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# ./stress.sh <your_program> <slow_program> gen <number_of_tests>
+
 g++ -g "$1".cpp -o "$1"
 g++ -g "$2".cpp -o "$2"
 g++ -g "$3".cpp -o "$3"
