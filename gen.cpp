@@ -123,13 +123,14 @@ void generate_test() {
 signed main() {
     srand(accuracy);
     // int t = rand(1, 10);
-    freopen("output.txt", "w", stdout);
+    // freopen("output.txt", "w", stdout);
     int t = 1;
     // cout << t << '\n';
-    t = rand(10000, 100000);
-    cout << t << '\n';
+    t = rand(1, 10);
+    int x = rand(1, 10);
+    cout << t << ' ' << x << '\n';
     while (t--) {
-        cout << rand(1, 1000000000) << ' ' ;
+        cout << rand(1, 10) << ' ' ;
     }
     cout << '\n';
 }

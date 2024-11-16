@@ -16,16 +16,14 @@ using namespace std;
 int mod = 1000000007;
 int inf = 1e18;
 
-int power(int base, int n, int m = mod) {
-  if (n == 0)
-    return 1;
-  if (n & 1) {
-    int x = power(base, n / 2);
-    return ((x * x) % m * base) % m;
-  } else {
-    int x = power(base, n / 2);
-    return (x * x) % m;
+bool prime(int n) {
+  if (n == 1)
+    return false;
+  for (int i = 2; i * i <= n; i++) {
+    if (n % i == 0)
+      return false;
   }
+  return true;
 }
 
 int32_t main() {
@@ -35,31 +33,24 @@ int32_t main() {
   int t = 1;
   // cin >> t;
   while (t--) {
-    int n, x;
-    cin >> n >> x;
+    int n;
+    cin >> n;
     vector<int> v(n);
-    map<int, int> m;
     for (int i = 0; i < n; i++) {
       cin >> v[i];
     }
-    sort(vf(v));
-    int s = 0;
-    for (int i : v) {
-      s = (s + i) % mod;
-    }
     for (int i = 0; i < n; i++) {
-      m[s - v[i]]++;
+      if (v[i] == 1) {
+        cout << "NO" << endl;
+        continue;
+      }
+      int x = v[i];
+      int sq = sqrt(x);
+      if (sq * sq == x and prime(sq)) {
+        cout << "YES" << endl;
+      } else
+        cout << "NO" << endl;
     }
-    int c = 0;
-    c = (s - v[n - 1] + mod) % mod;
-    while (m[c] % x == 0) {
-      m[c + 1] += (m[c] / x);
-      m[c] %= x;
-      c++;
-      c %= mod;
-    }
-    
-    cout << power(x, c) << endl;
   }
   return 0;
 }

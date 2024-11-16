@@ -45,21 +45,19 @@ int32_t main() {
     sort(vf(v));
     int s = 0;
     for (int i : v) {
-      s = (s + i) % mod;
+      s += i;
     }
     for (int i = 0; i < n; i++) {
       m[s - v[i]]++;
     }
     int c = 0;
-    c = (s - v[n - 1] + mod) % mod;
-    while (m[c] % x == 0) {
-      m[c + 1] += (m[c] / x);
-      m[c] %= x;
-      c++;
-      c %= mod;
+    while ((*m.begin()).second % x == 0) {
+       auto it = *m.begin();
+       m.erase(it.first);
+       m[it.first+1]+=it.second/x;
     }
-    
-    cout << power(x, c) << endl;
+    int q = min((*m.begin()).first,s);
+    cout << power(x, q) << endl;
   }
   return 0;
 }
