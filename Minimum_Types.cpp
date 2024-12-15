@@ -1,0 +1,61 @@
+#pragma GCC optimize("O3")
+#include<bits/stdc++.h>
+#ifndef ONLINE_JUDGE
+#include "F:\Codeforces\debug.h"
+#else 
+#define dbg(x...)
+#define dbgc(x...)
+#endif
+using namespace std;
+
+#define int   long long
+#define float long double
+#define vf(v) (v).begin(), (v).end()
+#define vr(v) (v).rbegin(), (v).rend()
+#define endl "\n"
+#define fastio ios_base::sync_with_stdio(false)
+#define in  cin.tie(NULL) 
+#define out cout.tie(NULL)
+//#include <ext/pb_ds/assoc_container.hpp>
+
+
+int mod  = 1000000007;
+int inf  = 1e18;
+
+int32_t main()
+{
+    fastio;in;out;
+    int t = 1;
+    cin >> t;
+    while(t--){
+      int n,k;
+      cin >> n >> k;
+      vector<pair<int,int>>v(n);
+      for(int i=0;i<n;i++){
+        cin >> v[i].first;
+      }
+      for(int i=0;i<n;i++){
+        cin >> v[i].second;
+      }
+      sort(vr(v));
+      vector<int>values(n);
+      for(int i=0;i<n;i++){
+        values[i]=(v[i].first*v[i].second);
+      }
+      sort(vr(values));
+      int c = 0;
+      int s = 0;
+      bool f =false;
+      for(int i=0;i<n;i++){
+        s+=values[i];
+        c++;
+        if(s>=k){
+          f = true;
+          break;
+        }
+      }
+      if(f)cout<<c<<endl;
+      else cout << -1 <<endl;
+    }
+    return 0;
+}

@@ -16,16 +16,12 @@ using namespace std;
 int mod = 1000000007;
 int inf = 1e18;
 
-int power(int base, int n, int m = mod) {
-  if (n == 0)
-    return 1;
-  if (n & 1) {
-    int x = power(base, n / 2);
-    return ((x * x) % m * base) % m;
-  } else {
-    int x = power(base, n / 2);
-    return (x * x) % m;
+bool prime(int n) {
+  for (int i = 2; i * i <= n; i++) {
+    if (n % i == 0)
+      return false;
   }
+  return true;
 }
 
 int32_t main() {
@@ -33,33 +29,29 @@ int32_t main() {
   in;
   out;
   int t = 1;
-  // cin >> t;
+  cin >> t;
   while (t--) {
-    int n, x;
-    cin >> n >> x;
+    int n;
+    cin >> n;
     vector<int> v(n);
-    map<int, int> m;
     for (int i = 0; i < n; i++) {
       cin >> v[i];
     }
-    sort(vf(v));
-    int s = 0;
-    for (int i : v) {
-      s = (s + i) % mod;
-    }
+    int gcd = 0;
     for (int i = 0; i < n; i++) {
-      m[s - v[i]]++;
+      gcd = __gcd(v[i], gcd);
     }
-    int c = 0;
-    c = (s - v[n - 1] + mod) % mod;
-    while (m[c] % x == 0) {
-      m[c + 1] += (m[c] / x);
-      m[c] %= x;
-      c++;
-      c %= mod;
+    if (gcd == 1)
+      cout << 0 << endl;
+    else {
+      int ans = 0;
+      int res = INT_MAX;
+      if(__gcd(n,gcd)==1)cout<<1<<endl;
+      else if(__gcd(n-1,gcd)==1)cout<<2<<endl;
+      else cout << 3 << endl;
     }
-    
-    cout << power(x, c) << endl;
   }
   return 0;
 }
+
+
