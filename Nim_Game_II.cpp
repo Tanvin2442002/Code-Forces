@@ -17,24 +17,37 @@ using namespace std;
 int mod  = 1000000007;
 ll inf  = 1e18;
 
+int mex(vector<int> &a) {
+  vector<bool> f(a.size() + 1, 0);
+  for (int i : a)
+    if (i <= (int)a.size())
+      f[i] = 1;
+  int mex = 0;
+  while (f[mex]) ++mex;
+  return mex;
+}
+
 int32_t main()
 {
     fastio;in;out;
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      int n;
+      cin >> n;
+      vector<int>v(n);
+      //vector<int>grundy(n+3);
+      for(int i=0;i<n;i++){
+        cin >> v[i];
+        v[i]%=4;
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
+      // int mx = *max_element(vf(v));
+      int xr = 0;
+      for(int i=0;i<n;i++){
+        xr ^= v[i];
       }
-      else cout << "No" << endl;
+      if(xr)cout <<"first" << endl;
+      else cout << "second" << endl;
     }
     return 0;
 }

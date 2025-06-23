@@ -23,18 +23,26 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
+      int n;
+      cin >> n;
+      int sz = n - 2;
+      vector<int>v(n-2);
+      for(int i=0;i<sz;i++){
+        cin >> v[i];
+      }
+      if(sz<3){
+        cout << "YES" << endl;
         continue;
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
+      bool f = false;
+      for(int i=0;i<sz-2;i++){
+        if(v[i]==1 and v[i+1]==0 and v[i+2]==1){
+          f = true;
+          break;
+        }
       }
-      else cout << "No" << endl;
+      if(f)cout << "NO" << endl;
+      else cout << "YES" << endl;
     }
     return 0;
 }

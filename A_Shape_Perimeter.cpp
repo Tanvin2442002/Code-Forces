@@ -23,18 +23,21 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      int n,m;
+      cin >> n >> m;
+      int s1 = 0;
+      int s2 = 0;
+      vector<pair<int,int>>p(n);
+      for(int i=0;i<n;i++){
+        cin >> p[i].first >> p[i].second;
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
+      for(int i=1;i<n;i++){
+        s2+=p[i].second;
+        s1+=p[i].first;
       }
-      else cout << "No" << endl;
+      s2*=2;
+      s1*=2;
+      cout << s2+s1+(4*m)<<endl;
     }
     return 0;
 }

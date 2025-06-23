@@ -30,8 +30,7 @@ int32_t main()
         continue;
       }
       int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
+      if(abs(diff)==1 or (diff+1>0 and (diff+1)%9==0)){
         cout << "Yes" << endl;
       }
       else cout << "No" << endl;

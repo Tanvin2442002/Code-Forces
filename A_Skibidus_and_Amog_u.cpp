@@ -23,18 +23,12 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
-      }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+      string s;
+      cin >> s;
+      s.pop_back();
+      s.pop_back();
+      s+="i";
+      cout << s << endl;
     }
     return 0;
 }

@@ -4,10 +4,9 @@
 using namespace std;
 
 #define ll  long long
-#define float long double
+#define ld long double
 #define vf(v) (v).begin(), (v).end()
 #define vr(v) (v).rbegin(), (v).rend()
-#define endl "\n"
 #define fastio ios_base::sync_with_stdio(false)
 #define in  cin.tie(NULL) 
 #define out cout.tie(NULL)
@@ -23,18 +22,14 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
-      }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+       string s;
+       cin >> s;
+       int a = stoi(s);
+       int sqt = sqrt(a);
+       if(sqt*sqt==a){
+          cout << sqt << " " << 0 << "\n";
+       }
+       else cout << "-1" << "\n";
     }
     return 0;
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-#define ll  long long
+#define int   long long
 #define float long double
 #define vf(v) (v).begin(), (v).end()
 #define vr(v) (v).rbegin(), (v).rend()
@@ -15,7 +15,7 @@ using namespace std;
 
 
 int mod  = 1000000007;
-ll inf  = 1e18;
+int inf  = 1e18;
 
 int32_t main()
 {
@@ -23,18 +23,22 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      int n,x,y;
+      cin >> n >> x >> y;
+      vector<int>v(n);
+      for(int i=0;i<n;i++){
+        cin >> v[i];
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+      sort(vf(v));
+      int sum = accumulate(vf(v),0LL);
+      int l = sum - y;
+      int r = sum - x;
+      int cnt = 0;
+      for(int i = 0;i<n-1;i++){
+        int choto = l - v[i];
+        int boro = r - v[i];
+        int left = lower_bound(v.begin()+i+1,v.end(),choto)-v.begin()
+      } 
     }
     return 0;
 }

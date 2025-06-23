@@ -1,13 +1,17 @@
 #pragma GCC optimize("O3")
 #include<bits/stdc++.h>
-
+// #ifndef ONLINE_JUDGE
+// #include "F:\Codeforces\debug.h"
+// #else 
+// #define dbg(x...)
+// #define dbgc(x...)
+// #endif
 using namespace std;
 
 #define ll  long long
-#define float long double
+#define ld long double
 #define vf(v) (v).begin(), (v).end()
 #define vr(v) (v).rbegin(), (v).rend()
-#define endl "\n"
 #define fastio ios_base::sync_with_stdio(false)
 #define in  cin.tie(NULL) 
 #define out cout.tie(NULL)
@@ -17,23 +21,23 @@ using namespace std;
 int mod  = 1000000007;
 ll inf  = 1e18;
 
-void solve() {
-  ll x, y;
-  cin >> x >> y;
-  if (x + 1 == y) {
-      cout << "Yes" << '\n';
-      return;
+// ld gamma = 0.5772156649;
+
+
+void solve(){
+  int n;
+  cin >> n;
+  // ld ln_n = log(n);
+  ll j = 0;
+  ll ans = 0;
+  for(ll i=1;i<=n;i=j+1){
+     ll divisor = n/i;
+     ll nth_div = n/divisor;
+     j = nth_div;
+     ans+= (divisor*(nth_div-i+1));
+    //  dbg(divisor,nth_div,ans);
   }
-  if (y == 1 and x % 9 == 0) {
-      cout << "Yes" << '\n';
-      return;
-  }
-  ll sum = x - y + 1;
-  if (sum > 0 and sum % 9 == 0) {
-      cout << "Yes" << '\n';
-      return;
-  }
-  cout <<"No"<<'\n';
+  cout << ans << "\n";
 }
 
 int32_t main()
@@ -42,7 +46,7 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      solve();
+        solve();
     }
     return 0;
 }

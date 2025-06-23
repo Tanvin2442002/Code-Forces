@@ -105,10 +105,9 @@ const int max_tests = 10;
 
 // complete this function according to the requirements
 void generate_test() {
-   int n = rand(0,10);
-   cout<<n<<endl;
-   string s = gen_string(n,false,1,26);
-   cout << s <<endl;
+  int n = rand(1,1000);
+  int m = rand(1,1000);
+  cout << n <<" "<<m<<endl;
 }
 
 signed main() {

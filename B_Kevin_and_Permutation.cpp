@@ -3,7 +3,7 @@
 
 using namespace std;
 
-#define ll  long long
+#define int   long long
 #define float long double
 #define vf(v) (v).begin(), (v).end()
 #define vr(v) (v).rbegin(), (v).rend()
@@ -15,7 +15,7 @@ using namespace std;
 
 
 int mod  = 1000000007;
-ll inf  = 1e18;
+int inf  = 1e18;
 
 int32_t main()
 {
@@ -23,18 +23,19 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      int n,k;
+      cin >> n >> k;
+      int div = 0;
+      div = n/k;
+      int j = 1;
+      int l = div + 1;
+      for(int i=1;i<=n;i++){
+        if(i%k==0){
+          cout << j++ << " ";
+        }
+        else cout << l++ <<" ";
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+      cout << endl;
     }
     return 0;
 }

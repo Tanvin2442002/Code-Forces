@@ -1,6 +1,11 @@
 #pragma GCC optimize("O3")
 #include<bits/stdc++.h>
-
+#ifndef ONLINE_JUDGE
+#include "F:\Codeforces\debug.h"
+#else 
+#define dbg(x...)
+#define dbgc(x...)
+#endif
 using namespace std;
 
 #define ll  long long
@@ -23,18 +28,23 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      int n;
+      cin >> n;
+      vector<int>v(n);
+      for(int i=0;i<n;i++){
+        cin >> v[i];
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
+      bool f = false;
+      for(int i=0;i<n;i++){
+        int l = i;
+        int r = n-(i+1);
+        if(v[i]<=2*max(l,r)){
+          f = true;
+          break;
+        }
       }
-      else cout << "No" << endl;
+      if(f)cout << "NO" << endl;
+      else cout << "YES" <<endl;
     }
     return 0;
 }

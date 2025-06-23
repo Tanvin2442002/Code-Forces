@@ -1,13 +1,17 @@
 #pragma GCC optimize("O3")
 #include<bits/stdc++.h>
-
+// #ifndef ONLINE_JUDGE
+// #include "F:\Codeforces\debug.h"
+// #else 
+// #define dbg(x...)
+// #define dbgc(x...)
+// #endif
 using namespace std;
 
 #define ll  long long
-#define float long double
+#define ld long double
 #define vf(v) (v).begin(), (v).end()
 #define vr(v) (v).rbegin(), (v).rend()
-#define endl "\n"
 #define fastio ios_base::sync_with_stdio(false)
 #define in  cin.tie(NULL) 
 #define out cout.tie(NULL)
@@ -23,18 +27,20 @@ int32_t main()
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      string s;
+      cin >> s;
+      vector<int>v(3);
+      for(int i=0;i<s.size();i++){
+         int x = 'Z'-s[i];
+         v[i] = x%4;
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
+     // dbg(v);
+      int ans = 0;
+      for(int i=0;i<v.size();i++){
+        ans^=v[i];
       }
-      else cout << "No" << endl;
+      if(ans)cout << "Jan" << endl;
+      else cout << "Jami" << endl;
     }
     return 0;
 }

@@ -17,24 +17,26 @@ using namespace std;
 int mod  = 1000000007;
 ll inf  = 1e18;
 
+ll countstairs(int n,vector<ll>&dp){
+  if(n<0)return 0;
+  if(n==0)return 1;
+  if(n==1)return 1;
+  if(dp[n]!=-1)return dp[n];
+  ll left = countstairs(n-1,dp);
+  ll right = countstairs(n-2,dp);
+  return dp[n] = left + right;
+}
+
 int32_t main()
 {
     fastio;in;out;
     int t = 1;
     cin >> t;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
-      }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+      int n;
+      cin >> n;
+      vector<ll>dp(n+1,-1);
+      cout<<countstairs(n,dp)<<endl;
     }
     return 0;
 }

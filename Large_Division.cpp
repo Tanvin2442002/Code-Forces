@@ -22,19 +22,25 @@ int32_t main()
     fastio;in;out;
     int t = 1;
     cin >> t;
+    int cs = 1;
     while(t--){
-      int x,y;
-      cin >> x >> y;
-      if(x%9==0 and y==1){
-        cout<<"YES"<<endl;
-        continue;
+      string s;
+      ll d ;
+      cin >> s;
+      reverse(vf(s));
+      if(s.back()=='-')s.pop_back();
+      reverse(vf(s));
+      cin >> d;
+      d = abs(d);
+      ll rem = 0;
+      for(auto i: s){
+        //dbg(rem);
+        rem = (rem*10 + (i-'0'));
+        rem = rem%d;
       }
-      int diff = (x-y);
-      int difff = y-x;
-      if(difff==1 or (diff+1>0 and (diff+1)%9==0)){
-        cout << "Yes" << endl;
-      }
-      else cout << "No" << endl;
+      //dbg(rem);
+      if(rem) cout <<  "Case " << cs++ <<": " << "not divisible" << '\n';
+      else cout <<  "Case " << cs++ <<": " << "divisible" << '\n';
     }
     return 0;
 }
